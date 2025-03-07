@@ -1,9 +1,5 @@
 function Loader() {
-    return (
-        <div>
-            loading ...
-        </div>
-    )
+  return <div className="loader"></div>;
 }
 
-export default Loader
+export default Loader;

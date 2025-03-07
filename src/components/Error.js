@@ -1,9 +1,9 @@
 function Error() {
-    return (
-        <div>
-            Error
-        </div>
-    )
+  return (
+    <div className="error">
+      🌍 Difficulty obtaining information about questions! please try again. 🌍
+    </div>
+  );
 }
 
-export default Error
+export default Error;

@@ -465,3 +465,31 @@ button:hover {
     gap: 1.5rem;
   }
 }
+
+.error {
+  font-size: larger;
+  font-weight: 600;
+  color: red;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 50px;
+  color: #0000;
+  background: linear-gradient(90deg,#C02942 calc(50% + 0.5ch),#000 0) right/calc(200% + 1ch) 100%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  animation: l7 2s infinite steps(11);
+}
+.loader:before {
+  content:"Loading..."
+}
+@keyframes l7 {to{background-position: left}}
