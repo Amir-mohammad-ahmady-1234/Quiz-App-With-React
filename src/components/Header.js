@@ -13,14 +13,14 @@ export default function Header() {
       </div>
       <div className="light-dark-toggle">
         <div className="sun-container">
-          <img src="" alt="picture of sun" />
+          <img src="#" alt="picture of sun" />
         </div>
         <label className="light-dark-switch" htmlFor="checkbox">
           <input type="checkbox" id="checkbox" />
           <div className="slider round"></div>
         </label>
         <div className="moon-container">
-          <img src="" alt="picture of moon" />
+          <img src="#" alt="picture of moon" />
         </div>
       </div>
     </article>
