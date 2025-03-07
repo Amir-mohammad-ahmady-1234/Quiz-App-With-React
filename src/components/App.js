@@ -45,11 +45,18 @@ function App() {
 
   return (
     <main>
-      <Header />
+      <Header questions={questions} status={status} index={index} />
       {status === "faildFind" && <Error />}
       {status === "fetching" && <Loader />}
-      {status === "ready" && <StartMenu dispatch={dispatch} />}
-      {status === "active" && <QuestionScreeen />}
+      {status === "ready" && (
+        <StartMenu dispatch={dispatch} questions={questions.quizzes} />
+      )}
+      {status === "active" && (
+        <QuestionScreeen
+          dispatch={dispatch}
+          question={questions.quizzes[index]}
+        />
+      )}
       {status === "finished" && <QuizComplete />}
     </main>
   );

@@ -1,20 +1,26 @@
-export default function QuestionScreeen() {
+import Option from "./Option";
+
+export default function QuestionScreeen({ dispatch, question }) {
+  console.log(question);
   return (
     <article className="question-screen">
       <div className="left-content">
         <div className="question-wrapper">
           <p className="question-count">
-            Question <span className="question-number"> number </span> of
+            Question <span className="question-number"> number </span> of{" "}
             <span className="question-total">total</span>
           </p>
-          <h2 className="question">Placeholder</h2>
+          <h2 className="question">{question.questions[0].question}</h2>
         </div>
         <div className="progress-bar whole">
           <div className="progress-bar done"></div>
         </div>
       </div>
       <div className="choices options">
-        <button id="A" className="option">
+        {question.questions[0].options.map((option, index) => (
+          <Option option={option} index={index} key={option} />
+        ))}
+        {/* <button id="A" className="option">
           <div className="option-box">A</div>
         </button>
         <button id="B" className="option">
@@ -25,7 +31,7 @@ export default function QuestionScreeen() {
         </button>
         <button id="D" className="option">
           <div className="option-box">D</div>
-        </button>
+        </button> */}
 
         <button className="submit-answer">Submit answer</button>
         <div className="select-prompt">

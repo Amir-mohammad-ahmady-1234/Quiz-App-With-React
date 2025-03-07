@@ -1,4 +1,6 @@
-export default function StartMenu({ dispatch }) {
+import QuizStarterBtn from "./QuizStarterBtn";
+
+export default function StartMenu({ dispatch, questions }) {
   return (
     <article className="start-menu">
       <div className="left-content">
@@ -9,10 +11,15 @@ export default function StartMenu({ dispatch }) {
       </div>
 
       <div className="choices">
-        <button
+        {questions.map((quiz) => (
+          <QuizStarterBtn key={quiz.title} dispatch={dispatch} quiz={quiz} />
+        ))}
+        {/* <button
           id="HTML"
           className="quiz-type"
-          onClick={(e) => dispatch({ type: "quizSelected", payload: e.target.id })}
+          onClick={(e) =>
+            dispatch({ type: "quizSelected", payload: e.target.id })
+          }
         >
           <div className="button-icon-container">
             <img src="./assets/images/icon-html.svg" alt="html icon" />
@@ -22,7 +29,9 @@ export default function StartMenu({ dispatch }) {
         <button
           id="CSS"
           className="quiz-type"
-          onClick={(e) => dispatch({ type: "quizSelected", payload: e.target.id })}
+          onClick={(e) =>
+            dispatch({ type: "quizSelected", payload: e.target.id })
+          }
         >
           <div className="button-icon-container">
             <img src="./assets/images/icon-css.svg" alt="css icon" />
@@ -32,7 +41,9 @@ export default function StartMenu({ dispatch }) {
         <button
           id="JavaScript"
           className="quiz-type"
-          onClick={(e) => dispatch({ type: "quizSelected", payload: e.target.id })}
+          onClick={(e) =>
+            dispatch({ type: "quizSelected", payload: e.target.id })
+          }
         >
           <div className="button-icon-container">
             <img src="./assets/images/icon-js.svg" alt="javascript icon" />
@@ -42,7 +53,9 @@ export default function StartMenu({ dispatch }) {
         <button
           id="Accessibility"
           className="quiz-type"
-          onClick={(e) => dispatch({ type: "quizSelected", payload: e.target.id })}
+          onClick={(e) =>
+            dispatch({ type: "quizSelected", payload: e.target.id })
+          }
         >
           <div className="button-icon-container">
             <img
@@ -51,7 +64,7 @@ export default function StartMenu({ dispatch }) {
             />
           </div>
           Accessibility
-        </button>
+        </button> */}
       </div>
     </article>
   );

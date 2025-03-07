@@ -1,15 +1,19 @@
-export default function Header() {
+export default function Header({ questions, status, index }) {
   return (
     <article className="row-top">
       <div className="curr-subject">
-        <div className="button-icon-container">
-          <img
-            className="subject-img"
-            src="./assets/images/icon-css.svg"
-            alt="subject icon"
-          />
-        </div>
-        <h2 className="subject-chosen">some Subject</h2>
+        {status === "active" && (
+          <>
+            <div className="button-icon-container">
+              <img
+                className="subject-img"
+                src={questions.quizzes[index].icon}
+                alt="subject icon"
+              />
+            </div>
+            <h2 className="subject-chosen">{questions.quizzes[index].title}</h2>
+          </>
+        )}
       </div>
       <div className="light-dark-toggle">
         <div className="sun-container">

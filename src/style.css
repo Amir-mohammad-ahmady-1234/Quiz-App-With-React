@@ -87,7 +87,7 @@ button {
 .curr-subject {
   display: flex;
   align-items: center;
-  visibility: hidden;
+  /* visibility: hidden; */
   gap: 1rem;
 }
 
