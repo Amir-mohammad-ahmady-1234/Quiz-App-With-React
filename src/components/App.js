@@ -4,6 +4,9 @@ import Header from "./Header";
 import QuestionScreeen from "./QuestionScreeen";
 import QuizComplete from "./QuizComplete";
 import StartMenu from "./StartMenu";
+import Loader from "./Loader";
+import Error from "./Error";
+
 
 const initialState = {
   questions: [],
@@ -32,13 +35,14 @@ function App() {
       .catch((err) => dispatch({ type: "error" }));
   }, []);
 
-
   return (
     <main>
       <Header />
-      <StartMenu />
-      <QuestionScreeen />
-      <QuizComplete />
+      {status === "faildFind" && <Error />}
+      {status === "fetching" && <Loader />}
+      {status === "ready" && <StartMenu />}
+      {status === "active" && <QuestionScreeen />}
+      {status === "finished" && <QuizComplete />}
     </main>
   );
 }
