@@ -64,17 +64,17 @@ button {
 /*************** End of css reset ****************/
 
 /*************** Start Hide Other Screens ****************/
-.start-menu {
+/* .start-menu {
     display: none;
-}
+} */
 
 .quiz-complete {
-    display: none;
+    /* display: none; */
     flex-direction: column;
 }
 
 .question-screen {
-    display: none;
+    /* display: none; */
     flex-direction: column;
 }
 

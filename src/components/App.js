@@ -1,7 +1,20 @@
 function App() {
   return (
     <main>
-      <article className="row-top">
+        <Header />
+        <StartMenu />
+        <QuestionScreeen />
+        <QuizComplete />
+    </main>
+  );
+}
+
+export default App;
+
+
+
+function Header () {
+return<article className="row-top">
         <div className="curr-subject">
           <div className="button-icon-container">
             <img
@@ -25,9 +38,10 @@ function App() {
           </div>
         </div>
       </article>
+}
 
-      {/* Quiz menu start */}
-      <article className="start-menu">
+function StartMenu () {
+return<article className="start-menu">
         <div className="left-content">
           <h1>
             Welcome to the <span className="bolded">Frontend Quiz!</span>
@@ -65,17 +79,16 @@ function App() {
           </button>
         </div>
       </article>
+}
 
-      {/* Quiz menu end */}
-
-      {/* Quiz question start */}
-      <article className="question-screen">
+function QuestionScreeen () {
+return<article className="question-screen">
         <div className="left-content">
           <div className="question-wrapper">
             <p className="question-count">
-              Question <span className="question-number">{/* number */}</span>{" "}
+              Question <span className="question-number"> number </span>{" "}
               of
-              <span className="question-total">{/* total */}</span>
+              <span className="question-total">total</span>
             </p>
             <h2 className="question">Placeholder</h2>
           </div>
@@ -104,11 +117,10 @@ function App() {
           </div>
         </div>
       </article>
+}
 
-      {/* Quiz question end */}
-
-      {/* Quiz completed start */}
-      <article className="quiz-complete">
+function QuizComplete () {
+return<article className="quiz-complete">
         <div className="complete-left">
           <h1>
             Quiz completed
@@ -136,9 +148,4 @@ function App() {
           <button className="restart">Play Again</button>
         </div>
       </article>
-      {/* Quiz completed end */}
-    </main>
-  );
 }
-
-export default App;
