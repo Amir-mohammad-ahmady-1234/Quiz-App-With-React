@@ -29,7 +29,7 @@ function App() {
   const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
 
   useEffect(function () {
-    fetch("http://localhost:8000/quizzes")
+    fetch("/data/data.json")
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataFetched", payload: data }))
       .catch((err) => dispatch({ type: "error" }));
