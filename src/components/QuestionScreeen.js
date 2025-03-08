@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import Option from "./Option";
 
 export default function QuestionScreeen({
@@ -7,15 +6,16 @@ export default function QuestionScreeen({
   questionIndex,
   answer,
   isSubmited,
+  flag,
+  status,
 }) {
-  console.log(question);
+  // console.log(question);
   // console.log(question.questions[questionIndex].answer);
 
-  const answerIndex = question.questions[questionIndex].options.findIndex(
+  const answerIndex = question.questions[questionIndex]?.options.findIndex(
     (option) => option === question.questions[questionIndex].answer
   );
 
-  const flag = useRef(false);
   return (
     <article className="question-screen">
       <div className="left-content">
@@ -25,7 +25,7 @@ export default function QuestionScreeen({
             <span className="question-total">total</span>
           </p>
           <h2 className="question">
-            {question.questions[questionIndex].question}
+            {question.questions[questionIndex]?.question}
           </h2>
         </div>
         <div className="progress-bar whole">
@@ -33,7 +33,7 @@ export default function QuestionScreeen({
         </div>
       </div>
       <div className="choices options">
-        {question.questions[questionIndex].options.map((option, index) => (
+        {question.questions[questionIndex]?.options.map((option, index) => (
           <Option
             option={option}
             index={index}
@@ -41,36 +41,24 @@ export default function QuestionScreeen({
             dispatch={dispatch}
             answer={answer}
             isSubmited={isSubmited}
-            correctAnswer={question.questions[questionIndex].answer}
-            question={question}
+            correctAnswer={question.questions[questionIndex]?.answer}
           />
         ))}
-        {/* <button id="A" className="option">
-          <div className="option-box">A</div>
-        </button>
-        <button id="B" className="option">
-          <div className="option-box">B</div>
-        </button>
-        <button id="C" className="option">
-          <div className="option-box">C</div>
-        </button>
-        <button id="D" className="option">
-          <div className="option-box">D</div>
-        </button> */}
 
         <button
           className="submit-answer"
-          onClick={() => {
-            dispatch({
-              type: "showAnswer",
-              payload: answer === answerIndex,
-            });
-            flag.current = true;
+          onClick={(e) => {
+            e.target.innerHTML === "Submit answer"
+              ? dispatch({
+                  type: "showAnswer",
+                  payload: answer === answerIndex,
+                })
+              : dispatch({ type: "nextQuestion" });
           }}
         >
           {isSubmited && answer !== null ? "Next Question" : "Submit answer"}
         </button>
-        {flag.current && answer === null && (
+        {flag && answer === null && (
           <div className="select-prompt">
             <img src="./assets/images/icon-error.svg" alt="error icon" />
             <p className="select-prompt-text">Please select an answer</p>

@@ -5,7 +5,6 @@ function Option({
   answer,
   isSubmited,
   correctAnswer,
-  question,
 }) {
   const id = index === 0 ? "A" : index === 1 ? "B" : index === 2 ? "C" : "D";
   const isCorrect = option === correctAnswer;
