@@ -1,6 +1,6 @@
 import Option from "./Option";
 
-export default function QuestionScreeen({ dispatch, question }) {
+export default function QuestionScreeen({ dispatch, question, questionIndex }) {
   console.log(question);
   return (
     <article className="question-screen">
@@ -10,14 +10,16 @@ export default function QuestionScreeen({ dispatch, question }) {
             Question <span className="question-number"> number </span> of{" "}
             <span className="question-total">total</span>
           </p>
-          <h2 className="question">{question.questions[0].question}</h2>
+          <h2 className="question">
+            {question.questions[questionIndex].question}
+          </h2>
         </div>
         <div className="progress-bar whole">
           <div className="progress-bar done"></div>
         </div>
       </div>
       <div className="choices options">
-        {question.questions[0].options.map((option, index) => (
+        {question.questions[questionIndex].options.map((option, index) => (
           <Option option={option} index={index} key={option} />
         ))}
         {/* <button id="A" className="option">

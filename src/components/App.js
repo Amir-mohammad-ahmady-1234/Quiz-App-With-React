@@ -12,6 +12,7 @@ const initialState = {
   // status : fetching, faildFind, ready, active, finished
   status: "fetching",
   index: null,
+  questionIndex: null,
 };
 
 function reducer(state, action) {
@@ -24,14 +25,19 @@ function reducer(state, action) {
       const quizSelectedIndex = state.questions.quizzes.findIndex(
         (quiz) => quiz.title === action.payload
       );
-      return { ...state, status: "active", index: quizSelectedIndex };
+      return {
+        ...state,
+        status: "active",
+        index: quizSelectedIndex,
+        questionIndex: 0,
+      };
     default:
       throw new Error("unknown");
   }
 }
 
 function App() {
-  const [{ questions, status, index }, dispatch] = useReducer(
+  const [{ questions, status, index, questionIndex }, dispatch] = useReducer(
     reducer,
     initialState
   );
@@ -55,6 +61,7 @@ function App() {
         <QuestionScreeen
           dispatch={dispatch}
           question={questions.quizzes[index]}
+          questionIndex={questionIndex}
         />
       )}
       {status === "finished" && <QuizComplete />}
