@@ -13,6 +13,9 @@ const initialState = {
   status: "fetching",
   index: null,
   questionIndex: null,
+  answer: null,
+  isSubmited: false,
+  correctAnswerNum: 0,
 };
 
 function reducer(state, action) {
@@ -31,16 +34,38 @@ function reducer(state, action) {
         index: quizSelectedIndex,
         questionIndex: 0,
       };
+    case "selectAnswer":
+      return {
+        ...state,
+        answer:
+          !state.isSubmited || !state.answer ? action.payload : state.answer,
+      };
+    case "showAnswer":
+      return {
+        ...state,
+        isSubmited: state.answer ? true : false,
+        correctAnswerNum: action.payload
+          ? state.correctAnswerNum++
+          : state.correctAnswerNum,
+      };
     default:
       throw new Error("unknown");
   }
 }
 
 function App() {
-  const [{ questions, status, index, questionIndex }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [
+    {
+      questions,
+      status,
+      index,
+      questionIndex,
+      answer,
+      isSubmited,
+      correctAnswerNum,
+    },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   useEffect(function () {
     fetch("/data/data.json")
@@ -62,6 +87,8 @@ function App() {
           dispatch={dispatch}
           question={questions.quizzes[index]}
           questionIndex={questionIndex}
+          answer={answer}
+          isSubmited={isSubmited}
         />
       )}
       {status === "finished" && <QuizComplete />}

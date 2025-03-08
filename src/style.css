@@ -308,7 +308,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  visibility: hidden;
+  /* visibility: hidden; */
   gap: 1rem;
 }
 

@@ -1,7 +1,21 @@
+import { useRef } from "react";
 import Option from "./Option";
 
-export default function QuestionScreeen({ dispatch, question, questionIndex }) {
+export default function QuestionScreeen({
+  dispatch,
+  question,
+  questionIndex,
+  answer,
+  isSubmited,
+}) {
   console.log(question);
+  // console.log(question.questions[questionIndex].answer);
+
+  const answerIndex = question.questions[questionIndex].options.findIndex(
+    (option) => option === question.questions[questionIndex].answer
+  );
+
+  const flag = useRef(false);
   return (
     <article className="question-screen">
       <div className="left-content">
@@ -20,7 +34,16 @@ export default function QuestionScreeen({ dispatch, question, questionIndex }) {
       </div>
       <div className="choices options">
         {question.questions[questionIndex].options.map((option, index) => (
-          <Option option={option} index={index} key={option} />
+          <Option
+            option={option}
+            index={index}
+            key={option}
+            dispatch={dispatch}
+            answer={answer}
+            isSubmited={isSubmited}
+            correctAnswer={question.questions[questionIndex].answer}
+            question={question}
+          />
         ))}
         {/* <button id="A" className="option">
           <div className="option-box">A</div>
@@ -35,11 +58,24 @@ export default function QuestionScreeen({ dispatch, question, questionIndex }) {
           <div className="option-box">D</div>
         </button> */}
 
-        <button className="submit-answer">Submit answer</button>
-        <div className="select-prompt">
-          <img src="./assets/images/icon-error.svg" alt="error icon" />
-          <p className="select-prompt-text">Please select an answer</p>
-        </div>
+        <button
+          className="submit-answer"
+          onClick={() => {
+            dispatch({
+              type: "showAnswer",
+              payload: answer === answerIndex,
+            });
+            flag.current = true;
+          }}
+        >
+          {isSubmited && answer !== null ? "Next Question" : "Submit answer"}
+        </button>
+        {flag.current && answer === null && (
+          <div className="select-prompt">
+            <img src="./assets/images/icon-error.svg" alt="error icon" />
+            <p className="select-prompt-text">Please select an answer</p>
+          </div>
+        )}
       </div>
     </article>
   );
