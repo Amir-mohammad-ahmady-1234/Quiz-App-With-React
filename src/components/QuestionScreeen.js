@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Option from "./Option";
 
 export default function QuestionScreeen({
@@ -9,11 +10,19 @@ export default function QuestionScreeen({
   flag,
   status,
 }) {
-  // console.log(question);
-  // console.log(question.questions[questionIndex].answer);
+  const [percentage, setPercentage] = useState(null);
 
   const answerIndex = question.questions[questionIndex]?.options.findIndex(
     (option) => option === question.questions[questionIndex].answer
+  );
+
+  useEffect(
+    function () {
+      const questionAnsweredPercentage =
+        (questionIndex / question.questions.length) * 100;
+      setPercentage(questionAnsweredPercentage);
+    },
+    [questionIndex, question.questions.length]
   );
 
   return (
@@ -29,7 +38,10 @@ export default function QuestionScreeen({
           </h2>
         </div>
         <div className="progress-bar whole">
-          <div className="progress-bar done"></div>
+          <div
+            className="progress-bar done"
+            style={{ width: percentage + "%" }}
+          ></div>
         </div>
       </div>
       <div className="choices options">
