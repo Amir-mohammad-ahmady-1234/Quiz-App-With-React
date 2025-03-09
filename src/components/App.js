@@ -87,10 +87,9 @@ function reducer(state, action) {
   }
 }
 
-
 function App() {
   // const flag = useRef(false);
-  
+
   const [
     {
       questions,
@@ -105,9 +104,14 @@ function App() {
     },
     dispatch,
   ] = useReducer(reducer, initialState);
-  
-  console.log(correctAnswerNum);
-  
+
+  useEffect(
+    function () {
+      console.log(correctAnswerNum);
+    },
+    [correctAnswerNum]
+  );
+
   useEffect(function () {
     fetch("/data/data.json")
       .then((res) => res.json())
