@@ -45,6 +45,7 @@ function reducer(state, action) {
             : state.answer,
       };
     case "showAnswer":
+      console.log(action.payload)
       return {
         ...state,
         isSubmited: state.answer !== null ? true : false,
