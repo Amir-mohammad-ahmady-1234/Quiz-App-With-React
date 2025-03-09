@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from "react";
+import { useEffect, useReducer } from "react";
 
 import Header from "./Header";
 import QuestionScreeen from "./QuestionScreeen";
@@ -50,22 +50,23 @@ function reducer(state, action) {
           : state.correctAnswerNum,
         flag: state.answer === null ? true : false,
       };
-      case "nextQuestion":
-        const questionsLength =
-          state.questions.quizzes[state.index].questions.length;
-      
-        const isActive =
-          state.questionIndex < questionsLength - 1;
-      
-        return isActive
-          ? {
-              ...state,
-              questionIndex: state.questionIndex + 1,
-              answer: null,
-              isSubmited: false,
-              flag: false,
-            }
-          : { ...state, status: "finished" };
+    case "nextQuestion":
+      const questionsLength =
+        state.questions.quizzes[state.index].questions.length;
+
+      const isActive = state.questionIndex < questionsLength - 1;
+
+      return isActive
+        ? {
+            ...state,
+            questionIndex: state.questionIndex + 1,
+            answer: null,
+            isSubmited: false,
+            flag: false,
+          }
+        : { ...state, status: "finished" };
+      case 'reset' : 
+          return {...initialState, status: 'ready', questions: state.questions}
     default:
       throw new Error("unknown");
   }
@@ -114,7 +115,14 @@ function App() {
           status={status}
         />
       )}
-      {status === "finished" && <QuizComplete />}
+      {status === "finished" && (
+        <QuizComplete
+          questions={questions}
+          index={index}
+          correctAnswerNum={correctAnswerNum}
+          dispatch={dispatch}
+        />
+      )}
     </main>
   );
 }

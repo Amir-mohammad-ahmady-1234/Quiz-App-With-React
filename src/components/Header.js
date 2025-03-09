@@ -2,16 +2,16 @@ export default function Header({ questions, status, index }) {
   return (
     <article className="row-top">
       <div className="curr-subject">
-        {status === "active" && (
+        {(status === "active" || status === "finished") && (
           <>
             <div className="button-icon-container">
               <img
                 className="subject-img"
-                src={questions.quizzes[index].icon}
+                src={questions.quizzes[index]?.icon}
                 alt="subject icon"
               />
             </div>
-            <h2 className="subject-chosen">{questions.quizzes[index].title}</h2>
+            <h2 className="subject-chosen">{questions.quizzes[index]?.title}</h2>
           </>
         )}
       </div>
