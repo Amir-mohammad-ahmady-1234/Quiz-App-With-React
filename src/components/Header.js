@@ -1,4 +1,12 @@
+import { useEffect, useState } from "react";
+
 export default function Header({ questions, status, index }) {
+  const [theme, setTheme] = useState("light");
+
+  useEffect(function () {
+    document.querySelector('html').dataset.theme = theme
+  }, [theme]);
+
   return (
     <article className="row-top">
       <div className="curr-subject">
@@ -11,7 +19,9 @@ export default function Header({ questions, status, index }) {
                 alt="subject icon"
               />
             </div>
-            <h2 className="subject-chosen">{questions.quizzes[index]?.title}</h2>
+            <h2 className="subject-chosen">
+              {questions.quizzes[index]?.title}
+            </h2>
           </>
         )}
       </div>
@@ -20,7 +30,14 @@ export default function Header({ questions, status, index }) {
           <img src="#" alt="picture of sun" />
         </div>
         <label className="light-dark-switch" htmlFor="checkbox">
-          <input type="checkbox" id="checkbox" />
+          <input
+            type="checkbox"
+            id="checkbox"
+            value={theme}
+            onChange={(e) =>
+              setTheme(e.target.value === "light" ? "dark" : "light")
+            }
+          />
           <div className="slider round"></div>
         </label>
         <div className="moon-container">
