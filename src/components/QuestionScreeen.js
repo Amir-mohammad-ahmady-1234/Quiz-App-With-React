@@ -30,8 +30,9 @@ export default function QuestionScreeen({
       <div className="left-content">
         <div className="question-wrapper">
           <p className="question-count">
-            Question <span className="question-number"> number </span> of{" "}
-            <span className="question-total">total</span>
+            Question{" "}
+            <span className="question-number"> {questionIndex + 1} </span> of{" "}
+            <span className="question-total">{question.questions.length}</span>
           </p>
           <h2 className="question">
             {question.questions[questionIndex]?.question}
