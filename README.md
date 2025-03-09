@@ -42,8 +42,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution URL](https://github.com/rainSaxFrontend-Mentor-Projects/frontend-quiz-app)
-- Live Site URL: [Live site URL](https://rainsaxfrontend-mentor-projects.github.io/frontend-quiz-app/)
+- challenges URL: [challenges URL](https://github.com/rainSaxFrontend-Mentor-Projects/frontend-quiz-app)
+- Live Site URL: [Live site URL](https://quiz-app-with-react-ufu6.vercel.app/)
 
 ## My process
 
@@ -83,6 +83,6 @@ I think it will be fun to continue working on this assignment as an on going pro
 
 - [fetch with json](https://dmitripavlutin.com/fetch-with-json/) - This helped me understand how to use await, fetch, and .json()
 
-## Author
+## Author : [amirMohammad](https://github.com/Amir-mohammad-ahmady-1234)
 
 - Frontend Mentor - [@rainSax](https://www.frontendmentor.io/profile/rainSax)
