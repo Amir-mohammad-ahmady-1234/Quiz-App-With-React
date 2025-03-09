@@ -39,12 +39,14 @@ function reducer(state, action) {
       return {
         ...state,
         answer:
-          !state.isSubmited || !state.answer ? action.payload : state.answer,
+          !state.isSubmited || state.answer === null
+            ? action.payload
+            : state.answer,
       };
     case "showAnswer":
       return {
         ...state,
-        isSubmited: state.answer ? true : false,
+        isSubmited: state.answer!==null ? true : false,
         correctAnswerNum: action.payload
           ? state.correctAnswerNum++
           : state.correctAnswerNum,
@@ -65,8 +67,8 @@ function reducer(state, action) {
             flag: false,
           }
         : { ...state, status: "finished" };
-      case 'reset' : 
-          return {...initialState, status: 'ready', questions: state.questions}
+    case "reset":
+      return { ...initialState, status: "ready", questions: state.questions };
     default:
       throw new Error("unknown");
   }
