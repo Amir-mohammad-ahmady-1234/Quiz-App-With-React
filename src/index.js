@@ -6,7 +6,7 @@ import App from "./components/App";
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 root.render(
-    <react.StrictMode>
+    // <react.StrictMode>
         <App />
-    </react.StrictMode>
+    // </react.StrictMode>
 )
