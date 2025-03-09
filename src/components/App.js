@@ -17,6 +17,7 @@ const initialState = {
   isSubmited: false,
   correctAnswerNum: 0,
   flag: false,
+  highestScore: 0,
 };
 
 function reducer(state, action) {
@@ -46,7 +47,7 @@ function reducer(state, action) {
     case "showAnswer":
       return {
         ...state,
-        isSubmited: state.answer!==null ? true : false,
+        isSubmited: state.answer !== null ? true : false,
         correctAnswerNum: action.payload
           ? state.correctAnswerNum++
           : state.correctAnswerNum,
@@ -66,9 +67,21 @@ function reducer(state, action) {
             isSubmited: false,
             flag: false,
           }
-        : { ...state, status: "finished" };
+        : {
+            ...state,
+            status: "finished",
+            highestScore:
+              state.correctAnswerNum > state.highestScore
+                ? state.correctAnswerNum
+                : state.highestScore,
+          };
     case "reset":
-      return { ...initialState, status: "ready", questions: state.questions };
+      return {
+        ...initialState,
+        status: "ready",
+        questions: state.questions,
+        highestScore: state.highestScore,
+      };
     default:
       throw new Error("unknown");
   }
@@ -87,6 +100,7 @@ function App() {
       isSubmited,
       correctAnswerNum,
       flag,
+      highestScore,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -123,6 +137,7 @@ function App() {
           index={index}
           correctAnswerNum={correctAnswerNum}
           dispatch={dispatch}
+          highestScore={highestScore}
         />
       )}
     </main>

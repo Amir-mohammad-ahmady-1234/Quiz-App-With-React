@@ -3,6 +3,7 @@ export default function QuizComplete({
   index,
   correctAnswerNum,
   dispatch,
+  highestScore,
 }) {
   return (
     <article className="quiz-complete">
@@ -32,7 +33,8 @@ export default function QuizComplete({
             out of{" "}
             <span className="complete-question-total">
               {questions.quizzes[index].questions.length}
-            </span>
+            </span>{" "}
+            | <span>Highest score: {highestScore}</span>
           </p>
         </div>
         <button className="restart" onClick={() => dispatch({ type: "reset" })}>
