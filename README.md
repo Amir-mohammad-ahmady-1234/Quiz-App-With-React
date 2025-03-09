@@ -43,7 +43,7 @@ Users should be able to:
 ### Links
 
 - challenges URL: [challenges URL](https://github.com/rainSaxFrontend-Mentor-Projects/frontend-quiz-app)
-- Live Site URL: [Live site URL](https://quiz-app-with-react-ufu6.vercel.app/)
+- Live Site URL: [Live site URL](https://quiz-app-with-react-m5ka.vercel.app/)
 
 ## My process
 
