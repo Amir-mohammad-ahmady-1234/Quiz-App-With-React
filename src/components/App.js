@@ -48,7 +48,7 @@ function reducer(state, action) {
       return {
         ...state,
         isSubmited: state.answer !== null ? true : false,
-        correctAnswerNum: action.payload
+        correctAnswerNum: !action.payload
           ? state.correctAnswerNum++
           : state.correctAnswerNum,
         flag: state.answer === null ? true : false,
