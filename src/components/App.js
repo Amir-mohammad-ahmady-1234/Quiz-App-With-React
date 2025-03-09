@@ -87,6 +87,8 @@ function reducer(state, action) {
   }
 }
 
+console.log(correctAnswerNum);
+
 function App() {
   // const flag = useRef(false);
 
