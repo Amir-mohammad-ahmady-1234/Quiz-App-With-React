@@ -35,10 +35,10 @@ Users should be able to:
 
 ### Screenshot
 
-![desktop Light](./screenshots/desktop-light.png "Light mode desktop view")
-![desktop dark](./screenshots/desktop-dark.png "Dark mode desktop view")
-![mobile Dark](./screenshots/mobile-dark.png "dark mode mobile view")
-![mobile light](./screenshots/mobile-light.png "light mode mobile view")
+![desktop Light](./public/screenshots/desktop-light.png "Light mode desktop view")
+![desktop dark](./public/screenshots/desktop-dark.png "Dark mode desktop view")
+![mobile Dark](./public/screenshots/mobile-dark.png "dark mode mobile view")
+![mobile light](./public/screenshots/mobile-light.png "light mode mobile view")
 
 ### Links
 
